@@ -1,12 +1,15 @@
 ### Results 
 
 ## Single tree (rpart) 
-  construction    rmse 0.00352  skill -0.1%
-  durable_mfg     rmse 0.00284  skill -14.3%
-  financial       rmse 0.00165  skill -12.2%
-  mining          rmse 0.00885  skill +16.0%
-  nondurable_mfg  rmse 0.00232  skill -3.0%
-  OVERALL          rmse 0.00462  skill +11.6%
+
+| Sector | RMSE | Skill |
+|---|---|---|---|
+  construction  |   0.00352  | -0.1%
+  durable_mfg    |  0.00284  |  -14.3%
+  financial     |   0.00165 |  -12.2%
+  mining         |  0.00885 |  +16.0%
+  nondurable_mfg  | 0.00232 |  -3.0%
+  OVERALL          | 0.00462 | skill | +11.6%
 ## Boosted (XGBoost)
   construction    rmse 0.00362  skill -3.1%
   durable_mfg     rmse 0.00250  skill -0.4%
