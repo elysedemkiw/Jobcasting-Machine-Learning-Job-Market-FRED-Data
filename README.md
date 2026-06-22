@@ -58,3 +58,17 @@ durable manufacturing: -6.4 percent
 
 The largest driver is last month's own job growth, followed by industrial production and housing permits
 
+## How to run
+
+
+Install packages: install.packages("xgboost") and devtools::install_github("cykbennie/fbi").
+Download current.csv into the project folder.
+Run the script. Each month, download a fresh current.csv and rerun.
+
+
+## References
+
+McCracken, M. W., and Ng, S. (2016). FRED-MD: A Monthly Database for Macroeconomic Research. Federal Reserve Bank of St. Louis.
+
+Chen, Y., Ng, S., and Bai, J. fbi: Factor-Based Imputation and FRED-MD/QD Data Set. https://github.com/cykbennie/fbi
+
