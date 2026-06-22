@@ -4,11 +4,11 @@
 library(fbi)
 library(xgboost)
 
-# ---- 1. Load and clean FRED-MD ----
+# 1. Load and clean FRED-MD 
 raw   <- fredmd("/Users/elyse/Desktop/jobcasting/current.csv", transform = TRUE)
 clean <- rm_outliers.fredmd(raw)
 
-# ---- 2. Build the panel: one row per industry per month ----
+# 2. Build the panel: one row per industry per month 
 lagk <- function(x, k) c(rep(NA, k), head(x, length(x) - k))
 
 industries <- c(mining = "CES1021000001", construction = "USCONS",
@@ -28,7 +28,7 @@ panel <- do.call(rbind, lapply(names(industries), build_one))
 panel <- panel[complete.cases(panel), ]
 panel$industry <- factor(panel$industry)
 
-# ---- 3. Train on all history except the latest month ----
+# 3. Train on all history except the latest month 
 X <- model.matrix(~ industry + claims + indpro + hours + permits +
                     unrate + spread + target_lag1 - 1, data = panel)
 y <- panel$target
@@ -43,7 +43,7 @@ set.seed(1)
 model <- xgb.train(params, xgb.DMatrix(X[idx_train, ], label = y[idx_train]),
                    nrounds = 250, verbose = 0)
 
-# ---- 4. Nowcast the latest month ----
+# 4. Nowcast the latest month 
 nowcast <- data.frame(
   industry       = panel$industry[idx_now],
   nowcast_growth = predict(model, xgb.DMatrix(X[idx_now, ])),
