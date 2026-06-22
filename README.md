@@ -58,6 +58,9 @@ durable manufacturing: -6.4 percent
 
 The largest driver is last month's own job growth, followed by industrial production and housing permits
 
+`` jobcastingcomparison.r ``"  builds the panel, fits a single rpart tree and plots it, then trains XGBoost and runs two evaluations against a per-industry baseline (the fair pre-2015 split via report(), and the expanding window that refits each month). Its output is skill numbers and a tree figure
+
+`` Jobcastingtight.r `` same cleaning and panel, but it skips the tree, the comparison, and the evaluation entirely, trains XGBoost once on all months except the latest, and prints the nowcast for that month. Its output is the prediction
 ## How to run
 
 
